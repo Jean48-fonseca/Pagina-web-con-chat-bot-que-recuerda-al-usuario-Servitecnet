@@ -154,6 +154,29 @@
             .card-buttons {
                 flex-wrap: wrap;
             }
+            /* --- Ajustes específicos para la portada pública --- */
+    
+    /* Pasa el contenedor dividido a una sola columna vertical */
+    .hero, .seccion-inicio {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 15px;
+    }
+
+    /* Achica el texto gigante (Cambia 'h1' si usaste otra clase) */
+    h1 { 
+        font-size: 2.2rem !important;
+        text-align: center;
+        line-height: 1.2;
+    }
+
+    /* Evita que los contenedores se desborden por los lados */
+    .container, .seccion {
+        width: 100% !important;
+        max-width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
         }
        
     .tarjeta-3d {

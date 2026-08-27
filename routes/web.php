@@ -7,6 +7,7 @@ use App\Http\Middleware\PinMiddleware; //<=middleware del pin
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\LeadController;
 use App\Http\Controllers\GoogleLoginController;
+use Illuminate\Support\Facades\Artisan;
 use App\Models\Project;
 Route::get('/', function () {
     //obtiene todos los proyectos de la base de datos y los pasa a la vista welcome
@@ -41,3 +42,8 @@ Route::prefix('admin')->middleware(PinMiddleware::class)->group(function () {
     //Autentificación de Google
     Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
+
+    Route::get('/semilla-secreta', function () {
+    Artisan::call('db:seed', ['--force' => true]);
+    return "¡Base de datos poblada con éxito! Ya puedes iniciar sesión.";
+});
