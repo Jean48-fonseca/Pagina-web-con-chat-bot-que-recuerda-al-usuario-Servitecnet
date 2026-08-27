@@ -445,7 +445,7 @@
         }
 
         // Función para enviar el mensaje a tu backend
-        async function sendMessage() {
+        window.enviarMensaje = async function() {
             const input = document.getElementById("chatInput");
             const messageText = input.value.trim();
             const chatBody = document.getElementById("chatBody");
