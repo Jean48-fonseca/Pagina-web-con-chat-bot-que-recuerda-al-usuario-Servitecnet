@@ -1,0 +1,692 @@
+/* Reseteo general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', 'Arial Black', sans-serif; /* Fuentes fuertes e impactantes */
+}
+
+      /* --- Barra de Navegación --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000000;
+    padding: 0 50px;
+    height: 70px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 10;
+}
+
+/* Estilos para el placeholder del logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.logo-highlight {
+    color: #e67e22; /* Color anaranjado sutil como referencia visual */
+}
+
+.logo-img {
+    height: 50px; /* Ajusta este valor cuando subas tu logo real */
+    width: auto;
+}
+
+            /* Menú de Enlaces */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    align-items: center;
+}
+
+.nav-menu li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #999999;
+}
+
+.search-icon {
+    font-size: 16px !important;
+}
+
+/* --- Banner Principal (Hero Section) --- */
+.hero-slider {
+    /* Tu imagen con una capa oscura semitransparente encima */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://wallpaperbat.com/img/9736419-double-exposure-generative-ai-22453397.jpg');
+    background-size: cover;
+    background-position: center;
+    height: calc(100vh - 70px); /* Ocupa la pantalla restando la altura del menú */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Títulos principales (Réplica de los textos grandes con sombra) */
+.hero-content h1 {
+    color: #ffffff;
+    font-size: 6rem; /* Texto masivo */
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+    margin-bottom: 5px;
+    letter-spacing: -1px;
+}
+
+.hero-content h2 {
+    color: #ffffff;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+    margin-bottom: 45px;
+    line-height: 1.3;
+}
+
+/* --- Botón Verde de Contacto --- */
+.btn-whatsapp-hero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: #61b861; /* Verde similar a la imagen */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 900;
+    padding: 15px 45px;
+    border-radius: 20px; /* Bordes notablemente redondeados */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.btn-whatsapp-hero:hover {
+    background-color: #4da64d;
+    transform: scale(1.03);
+}
+
+/* --- Controles del Slider (Puntitos Inferiores) --- */
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    z-index: 1;
+}
+
+.dot {
+    width: 18px;
+    height: 18px;
+    background-color: transparent;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #ffffff;
+}
+
+.dot:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+/* --- Galería Dinámica de Proyectos --- */
+.projects-section {
+    padding: 80px 50px;
+    background-color: #f8f9fa; /* Fondo claro para contrastar con el menú oscuro */
+    text-align: center;
+}
+
+.projects-section h2 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #111;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    text-align: left;
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* Efecto al pasar el mouse */
+}
+
+.project-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Asegura que la foto no se deforme */
+}
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    font-size: 1.2rem;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.project-info p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+    /* efectos del cursor */
+body {
+    cursor: none;
+}
+
+/* Estilos de nuestro nuevo cursor */
+.cursor-dot, .cursor-outline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 9999;
+    pointer-events: none; /* Vital para poder hacer clics a los botones reales */
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ffcc00; 
+}
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgba(255, 204, 0, 0.5);
+    /* El transition crea el efecto de seguimiento suave */
+    transition: top 0.15s ease-out, left 0.15s ease-out; 
+}
+/* Cuando el cursor pasa sobre un elemento interactivo */
+.cursor-outline.hover-effect {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: rgba(255, 204, 0, 0.2);
+    border-color: transparent;
+}
+
+  /* --- Sección de Servicios --- */
+.services-section {
+    padding: 90px 20px;
+    background-color: #ffffff; /* Fondo blanco limpio */
+    text-align: center;
+}
+
+.services-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: #111;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.section-title span {
+    color: #ffcc00; /* El amarillo de ServiTecNet */
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.services-grid {
+    display: grid;
+    /* Esto hace que sea responsive automáticamente sin media queries */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    background: #f8f9fa; /* Gris súper clarito */
+    padding: 40px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid transparent; /* Borde invisible inicial */
+}
+
+/* Efecto al pasar el mouse por encima */
+.service-card:hover {
+    transform: translateY(-10px); /* Se levanta la tarjeta */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Sombra más fuerte */
+    border-bottom: 4px solid #ffcc00; /* Aparece una línea amarilla abajo */
+}
+
+.service-icon {
+    font-size: 3.5rem; /* Emojis grandes actuando como iconos */
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #222;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.service-card p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+/* --- Sección de Proyectos --- */
+.projects-section {
+    padding: 90px 20px;
+    background-color: #f4f6f8; /* Un gris un poco más oscuro que los servicios para crear contraste visual */
+    text-align: center;
+}
+
+.projects-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.project-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden; /* Evita que la foto se salga de los bordes redondeados */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    text-align: left;
+}
+
+/* Efecto al pasar el mouse por el proyecto */
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.project-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover; /* Mantiene la proporción de la foto sin aplastarla */
+    transition: transform 0.5s ease;
+}
+
+/* Pequeño zoom a la foto al hacer hover en la tarjeta */
+.project-card:hover .project-img {
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.project-info p {
+    color: #555;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+/* --- Sección de Contacto --- */
+.contact-section {
+    padding: 90px 20px;
+    background-color: #ffffff;
+}
+
+.contact-section .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 40px;
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Lado Izquierdo: Info */
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    color: #111;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.contact-info > p {
+    color: #555;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.info-list {
+    list-style: none;
+}
+
+.info-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.info-list .icon {
+    font-size: 1.5rem;
+    background: #ffcc00; /* El amarillo de la marca */
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.info-list strong {
+    display: block;
+    color: #222;
+    margin-bottom: 3px;
+}
+
+.info-list a, .info-list p {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+.info-list a:hover {
+    color: #ffcc00;
+}
+
+/* Lado Derecho: Formulario */
+.contact-form-container {
+    flex: 1;
+    min-width: 300px;
+    background: #ffffff;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    font-family: inherit;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: #ffcc00;
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.2);
+}
+
+.btn-submit {
+    width: 100%;
+    background-color: #111;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-submit:hover {
+    background-color: #ffcc00;
+    color: #111;
+    transform: translateY(-2px);
+}
+
+/* Fondo de toda la pantalla de administrador */
+body {
+    background-color: #f7f3e8; /* Color crema pastel de la imagen */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.admin-dashboard {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* --- Encabezado --- */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.admin-title {
+    font-size: 2.2rem;
+    color: #4a2f1d; /* Marrón oscuro */
+    font-weight: 900;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-add {
+    background-color: #a45a30;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(164, 90, 48, 0.3);
+}
+
+.search-box input {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #dcd3c6;
+    background-color: #f2ebe0;
+    color: #4a2f1d;
+    outline: none;
+}
+
+.btn-filter {
+    background-color: #dfc8b4;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #4a2f1d;
+}
+
+/* --- Cuadrícula de Proyectos --- */
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    gap: 25px;
+}
+
+.admin-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.card-img-container {
+    width: 40%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 140px;
+}
+
+.card-info {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    color: #111;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.card-duration {
+    font-size: 0.85rem;
+    color: #444;
+    margin-bottom: 5px;
+}
+
+.card-desc {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.card-pm {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #4a2f1d;
+    border-bottom: 4px solid #dfc8b4; /* La línea decorativa debajo del nombre */
+    padding-bottom: 5px;
+    width: fit-content;
+}
+
+/* --- Botones Inferiores --- */
+.card-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.card-buttons a, .card-buttons button {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-edit { background-color: #eab474; color: #4a2f1d; }
+.btn-delete { background-color: #c95e46; color: white; }
+.btn-details { background-color: #dfc8b4; color: #4a2f1d; }
+.form-delete { display: flex; flex: 1; }
