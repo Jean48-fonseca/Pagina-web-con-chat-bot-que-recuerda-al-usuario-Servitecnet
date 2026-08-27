@@ -26,4 +26,4 @@ RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-avail
     && sed -ri -e 's!/var/www/!/var/www/html/public!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
 # 7. Migrar base de datos y encender la web
-CMD php artisan optimize:clear && php artisan migrate --force && php artisan db:seed --force && apache2-foreground
+CMD php artisan optimize:clear && php artisan migrate --force && apache2-foreground

@@ -12,8 +12,9 @@ class AdminUserSeeder extends Seeder
     public function run(): void
     {
         user::firtOrcreate([
-            'name' => 'Admin ServitecNet',
-            'email' => 'admin@servitecnet.com',
+            'email' => 'admin@servitecnet.com'],
+           [
+           'name' => 'Admin ServitecNet',
             'password' => Hash::make('Admin2026'), //<--contraseña encriptada
             'role' => 'admin', //<--privelegio de administrador
         ]);
