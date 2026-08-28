@@ -37,6 +37,6 @@ return [
     'google' =>[
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => env('https://servitecnet.onrender.com/auth/google/callback'),
+        'redirect' => 'https://servitecnet.onrender.com/auth/google/callback',
     ]
 ];
