@@ -524,7 +524,7 @@
         document.getElementById("chatInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
-                sendMessage();
+                enviarMensaje();
             }
         });
     </script>
