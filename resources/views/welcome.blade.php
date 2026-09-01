@@ -324,7 +324,7 @@
         <div class="tarjeta-3d">
             
             <!-- 1. La Imagen normal (Se oculta al pasar el mouse) -->
-            <img src="{{ asset( $project->image_path) }}" alt="{{ $project->title }}" class="img-frontal">
+            <img src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->title }}" class="img-frontal">
             
             <!-- Etiqueta indicadora (para que el cliente sepa que hay algo más) -->
             <span style="position: absolute; top: 10px; right: 10px; background: #fbc02d; color: #000; padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 0.75rem; z-index: 3; box-shadow: 0 2px 5px rgba(0,0,0,0.5); pointer-events: none;">
@@ -333,7 +333,7 @@
 
             <!-- 2. El Visor 3D (Siempre está ahí, pero oculto atrás) -->
             <model-viewer 
-                src="{{ asset($project->modelo_3d_ruta) }}" 
+                src="{{ asset('storage/' . $project->modelo_3d_ruta) }}" 
                 alt="Modelo 3D" 
                 auto-rotate 
                 camera-controls 
@@ -342,7 +342,7 @@
         </div>
     @else
         <!-- Imagen Normal (para proyectos comunes) -->
-        <img src="{{ asset( $project->image_path) }}" alt="{{ $project->title }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px 8px 0 0;">
+        <img src="{{ asset('storage/' . $project->image_path) }}" alt="{{ $project->title }}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px 8px 0 0;">
     @endif
 
     <!-- Aquí debajo va el título y la descripción del proyecto... -->

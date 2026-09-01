@@ -44,18 +44,14 @@ class ProjectController extends Controller
         $ruta3d = null;
 
         //2.Procesar la imagen
-        if ($request->hasFile('modelo_3d')) {
-        $modelo = $request->file('modelo_3d');
-        $modeloName = '3d_' . time() . '.' . $modelo->getClientOriginalExtension();
-        $path3d = public_path('models3d');
+       if ($request->hasFile('image')) {
+        // Laravel genera el nombre único, lo guarda en storage/app/public/projects/images y devuelve la ruta
+        $rutaImagen = $request->file('image')->store('projects/images', 'public');
+    }
 
-        // PARCHE: Crear la carpeta automáticamente si no existe en el servidor
-        if (!file_exists($path3d)) {
-            mkdir($path3d, 0755, true);
-        }
-
-        $modelo->move($path3d, $modeloName);
-        $ruta3d = 'models3d/' . $modeloName;
+    if ($request->hasFile('modelo_3d')) {
+        // Se guarda en storage/app/public/projects/models3d
+        $ruta3d = $request->file('modelo_3d')->store('projects/models3d', 'public');
     }
             $es_destacado = $request->has('es_destacado') ? 1 : 0;
         // 3. Guardar todo en la base de datos
