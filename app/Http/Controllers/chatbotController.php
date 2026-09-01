@@ -6,18 +6,18 @@ use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
-class chatbotController extends Controller
+class ChatbotController extends Controller
 {
     public function procesarChat(Request $request)
     {
         $historial = $request->input('historial',[]);
 
-        //llamada a la API de Huggin face
+        //llamada a la API de Deepseek
         try{
             // URL de Deepseek usando el modelo Mistral
            $url = 'https://api.deepseek.com/chat/completions';
 
-            // 2. Definimos las reglas de la IA (Tu excelente Prompt)
+            // 2. Definimos las reglas de la IA 
             $instruccionDelSistema = [
                 [
                     'role' => 'system',
@@ -30,8 +30,8 @@ class chatbotController extends Controller
 
             // 4. Hacemos la petición a DeepSeek enviando TODO el bloque fusionado
             // Nota: Agregué withoutVerifying() por si XAMPP molesta con los certificados SSL
-            $response = Http::withoutVerifying()->withHeaders([
-                'Authorization' => 'Bearer ' . env('DEEPSEEK_API_KEY'),
+            $response = Http::withHeaders([
+                'Authorization' => 'Bearer ' . config('services.deepseek.key'),
                 'Content-Type' => 'application/json',
             ])->post($url, [
                 'model' => 'deepseek-chat',

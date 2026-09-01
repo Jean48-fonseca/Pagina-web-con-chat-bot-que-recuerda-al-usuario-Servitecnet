@@ -38,5 +38,8 @@ return [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => 'https://servitecnet.onrender.com/auth/google/callback',
-    ]
+    ],
+    'deepseek' => [
+        'key' => env('DEEPSEEK_API_KEY'),
+    ],
 ];

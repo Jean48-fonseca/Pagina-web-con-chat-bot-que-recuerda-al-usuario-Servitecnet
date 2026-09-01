@@ -38,7 +38,7 @@ Route::prefix('admin')->middleware(PinMiddleware::class)->group(function () {
     Route::put('/proyectos/{project}', [ProjectController::class, 'update'])->name('projects.update');
     });
     // Ruta para manejar la solicitud AJAX del chatbot
-    Route::post('/chat/enviar', [chatbotController::class, 'procesarChat'])->name('chat.enviar');
+    Route::post('/chat/enviar', [ChatbotController::class, 'procesarChat'])->name('chat.enviar');
     //Autentificación de Google
     Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
