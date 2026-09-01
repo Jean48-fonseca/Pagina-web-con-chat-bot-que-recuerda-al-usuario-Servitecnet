@@ -27,4 +27,4 @@ RUN sed -ri -e 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-avail
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 RUN php artisan storage:link
 # 7. Migrar base de datos y encender la web
-CMD php artisan optimize:clear && php artisan migrate --force && apache2-foreground
+CMD php artisan optimize:clear && php artisan migrate --force --seed && apache2-foreground

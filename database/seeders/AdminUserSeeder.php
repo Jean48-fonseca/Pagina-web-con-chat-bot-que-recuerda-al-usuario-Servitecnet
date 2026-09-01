@@ -11,7 +11,7 @@ class AdminUserSeeder extends Seeder
   
     public function run(): void
     {
-        user::firtOrcreate([
+        user::firstOrCreate([
             'email' => 'admin@servitecnet.com'],
            [
            'name' => 'Admin ServitecNet',
