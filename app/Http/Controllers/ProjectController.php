@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
-use hasFactory;
+use Illuminate\Support\Facades\Storage;
 class ProjectController extends Controller
 {
-    //linea para q funcione el create
-    protected $fillable=['title','description','image_path'];
-
     // estaq funcion muestra la tabla con todos los proyectos
     public function index()
     {
@@ -17,17 +14,12 @@ class ProjectController extends Controller
         return view('admin.projects.index', compact('projects'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('admin.projects.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+ 
     public function store(Request $request)
     {
         //1. Validar que los datos lleguen correctamente
@@ -88,7 +80,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project, )
+    public function update(Request $request, Project $project )
     {
 
         $request->validate([
@@ -100,35 +92,22 @@ class ProjectController extends Controller
             
             ]);
         if ($request->hasFile('image')) {
-            // 1. Borrar la imagen anterior si existe
-            {
-                $oldImagePath = public_path($project->image_path);
-                if ($project->image_path && file_exists($oldImagePath)) {
-                    unlink($oldImagePath);
-                }
+            // Borra la imagen antigua del storage
+            if ($project->image_path) {
+                Storage::disk('public')->delete($project->image_path);
             }
-
-            // 2. Procesar la nueva imagen
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalName();
-            $image->move(public_path('images/projects'), $imageName);
-            //actualizamos la ruta en el proyecto
-            $project->image_path = 'images/projects/' . $imageName;
+            // Guarda la nueva
+            $project->image_path = $request->file('image')->store('projects/images', 'public');
         }
-        //bloque modelo 3d
+
+        // 2. Procesar el nuevo modelo 3D si se subió uno
         if ($request->hasFile('modelo_3d')) {
-            // Borrar el modelo 3D anterior si existe para ahorrar espacio
-            $oldModelPath = public_path($project->modelo_3d_ruta);
-            if ($project->modelo_3d_ruta && file_exists($oldModelPath)) {
-                unlink($oldModelPath);
+            // Borra el modelo 3D antiguo del storage
+            if ($project->modelo_3d_ruta) {
+                Storage::disk('public')->delete($project->modelo_3d_ruta);
             }
-            // Procesar el nuevo modelo 3D
-            $modelo = $request->file('modelo_3d');
-            $modeloName = '3d_' . time() . '.' . $modelo->getClientOriginalExtension();
-            $modelo->move(public_path('models3d'), $modeloName);
-            
-            // Actualizamos la ruta SOLO del modelo 3D
-            $project->modelo_3d_ruta = 'models3d/' . $modeloName;
+            // Guarda el nuevo
+            $project->modelo_3d_ruta = $request->file('modelo_3d')->store('projects/models3d', 'public');
         }
         //Actualizamos los textos
         $project->title = $request->title;
@@ -146,14 +125,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        // 1. Buscar la foto física en la carpeta y borrarla para liberar espacio
-        $imagePath = public_path($project->image_path);
-        
-        if ($project->image_path && file_exists(public_path($project->$imagePath))) {
-            unlink(public_path($project->image_path));
+        // 1. Eliminar archivos físicos asociados usando Storage
+        if ($project->image_path) {
+            Storage::disk('public')->delete($project->image_path);
         }
-        if ($project->modelo_3d_ruta && file_exists(public_path($project->modelo_3d_ruta))){
-            unlink(public_path($project->modelo_3d_ruta));
+        if ($project->modelo_3d_ruta) {
+            Storage::disk('public')->delete($project->modelo_3d_ruta);
         }
 
         // 2. Borrar el registro de la base de datos
