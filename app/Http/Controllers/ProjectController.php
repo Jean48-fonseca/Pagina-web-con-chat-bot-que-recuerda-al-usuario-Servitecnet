@@ -36,7 +36,7 @@ class ProjectController extends Controller
             'description' => 'required|string',
             'encargado' => 'required|string|max:255',
             //la imagen frontal normal
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp |max:9122',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:9122',
             //archivo modelo 3D
             'modelo_3d' => 'nullable|file'
         ]);
@@ -44,26 +44,19 @@ class ProjectController extends Controller
         $ruta3d = null;
 
         //2.Procesar la imagen
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
+        if ($request->hasFile('modelo_3d')) {
+        $modelo = $request->file('modelo_3d');
+        $modeloName = '3d_' . time() . '.' . $modelo->getClientOriginalExtension();
+        $path3d = public_path('models3d');
 
-            //se crea nombre unico usando la hora de creacion para evitar sobreescritura de imagen
-            $imageName =time() . '.' . $image->getClientOriginalExtension();
-
-            //La foto se guarda fisicamente en public/images/projects
-            $image->move(public_path('images/projects'), $imageName);
-
-            // Guardar la ruta  en una variable de la base de datos
-            $rutaImagen = 'images/projects/' . $imageName;
+        // PARCHE: Crear la carpeta automáticamente si no existe en el servidor
+        if (!file_exists($path3d)) {
+            mkdir($path3d, 0755, true);
         }
-        //procesar el modelo 3D
-        if ($request->hasFile('modelo_3d')){
-            $modelo = $request->file('modelo_3d');
-            //el prefijo '3d_' facilita su identificación
-            $modeloName = '3d_' . time(). '.' . $modelo->getCLientOriginalExtension();
-            $modelo->move(public_path('models3d'), $modeloName);
-            $ruta3d = 'models3d/' . $modeloName;
-            }
+
+        $modelo->move($path3d, $modeloName);
+        $ruta3d = 'models3d/' . $modeloName;
+    }
             $es_destacado = $request->has('es_destacado') ? 1 : 0;
         // 3. Guardar todo en la base de datos
         Project::create([
