@@ -233,6 +233,34 @@
     transform: scale(1.1);
     color: white;
 }
+/*  SPINNER PARA EL VISOR 3D  */
+model-viewer::part(default-progress-bar) {
+    display: none;
+}
+
+
+.spinner-elegante {
+    display: block;
+    width: 45px;
+    height: 45px;
+    border: 4px solid rgba(251, 192, 45, 0.2); /* Borde semitransparente */
+    border-top-color: #fbc02d; /* Borde superior con el color principal */
+    border-radius: 50%;
+    animation: girar 1s linear infinite;
+    
+    /* Centrado absoluto */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10; /* Para que se vea por encima de todo */
+}
+
+/* 3. Animación de giro infinito */
+@keyframes girar {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
 
     </style>
 </head>
@@ -338,6 +366,8 @@
                 auto-rotate 
                 camera-controls 
                 class="modelo-fondo">
+                
+                <div slot="progress-bar" class="spinner-elegante"></div>
             </model-viewer>
         </div>
     @else
