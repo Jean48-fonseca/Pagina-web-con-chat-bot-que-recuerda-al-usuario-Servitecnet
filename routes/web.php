@@ -49,9 +49,19 @@ Route::prefix('admin')->middleware(PinMiddleware::class)->group(function () {
     Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
 
     // temporal 
-    Route::get('/limpiar-cache', function() {
+    Route::get('/debug-cloudinary', function() {
+    // 1. Forzamos la limpieza profunda de caché
     \Illuminate\Support\Facades\Artisan::call('config:clear');
     \Illuminate\Support\Facades\Artisan::call('cache:clear');
-    return "¡Memoria caché limpia! Laravel ya puede leer Cloudinary.";
+    
+    // 2. Buscamos si la variable existe
+    $url = env('CLOUDINARY_URL');
+    
+    // 3. Mostramos el resultado en pantalla
+    if ($url) {
+        return "¡ÉXITO! Memoria limpia. Render ya lee la variable: " . substr($url, 0, 20) . "...";
+    } else {
+        return "ERROR: Render sigue sin leer la variable. Sigue siendo NULL.";
+    }
 });
     
