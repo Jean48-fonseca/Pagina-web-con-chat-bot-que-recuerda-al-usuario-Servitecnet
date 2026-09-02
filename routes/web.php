@@ -48,4 +48,10 @@ Route::prefix('admin')->middleware(PinMiddleware::class)->group(function () {
     Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
 
+    // temporal 
+    Route::get('/limpiar-cache', function() {
+    \Illuminate\Support\Facades\Artisan::call('config:clear');
+    \Illuminate\Support\Facades\Artisan::call('cache:clear');
+    return "¡Memoria caché limpia! Laravel ya puede leer Cloudinary.";
+});
     
