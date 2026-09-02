@@ -17,7 +17,9 @@ Route::get('/', function () {
 });
   //Rutas de la puerta (Publicas para intentar entrar)
 Route::get('/admin/login',[AdminAuthController::class, 'showLogin'])->name('admin.login');
-Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.verify');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])
+->name('admin.verify')
+->middleware('throttle:5,1'); // Limita a 5 intentos de inicio de sesión por minuto por IP
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
   // Rutas del Panel de Administración (CMS),protegidas por el middleware
@@ -38,7 +40,10 @@ Route::prefix('admin')->middleware(PinMiddleware::class)->group(function () {
     Route::put('/proyectos/{project}', [ProjectController::class, 'update'])->name('projects.update');
     });
     // Ruta para manejar la solicitud AJAX del chatbot
-    Route::post('/chat/enviar', [ChatbotController::class, 'procesarChat'])->name('chat.enviar');
+    Route::post('/chat/enviar', [ChatbotController::class, 'procesarChat'])
+    ->name('chat.enviar')
+    ->middleware('throttle:10,1'); // Limita a 10 solicitudes por minuto por IP
+    
     //Autentificación de Google
     Route::get('/auth/google', [GoogleLoginController::class, 'redirectToGoogle'])->name('google.login');
     Route::get('/auth/google/callback', [GoogleLoginController::class, 'handleGoogleCallback']);
