@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
-use Illuminate\Support\Facades\Storage;
+
 class ProjectController extends Controller
 {
     // estaq funcion muestra la tabla con todos los proyectos
@@ -22,7 +22,7 @@ class ProjectController extends Controller
  
     public function store(Request $request)
     {
-        //1. Validar que los datos lleguen correctamente
+        // Validar que los datos lleguen correctamente
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -35,16 +35,20 @@ class ProjectController extends Controller
         $rutaImagen = null;
         $ruta3d = null;
 
-        //2.Procesar la imagen
-       if ($request->hasFile('image')) {
-        // Laravel genera el nombre único, lo guarda en storage/app/public/projects/images y devuelve la ruta
-        $rutaImagen = $request->file('image')->store('projects/images', 'public');
-    }
+       // 1. Subir imagen a Cloudinary
+        if ($request->hasFile('image')) {
+            $rutaImagen = cloudinary()->upload($request->file('image')->getRealPath(), [
+                'folder' => 'servitecnet/images'
+            ])->getSecurePath();
+        }
 
-    if ($request->hasFile('modelo_3d')) {
-        // Se guarda en storage/app/public/projects/models3d
-        $ruta3d = $request->file('modelo_3d')->store('projects/models3d', 'public');
-    }
+        // 2. Subir modelo 3D a Cloudinary (resource_type auto es vital para .glb)
+        if ($request->hasFile('modelo_3d')) {
+            $ruta3d = cloudinary()->upload($request->file('modelo_3d')->getRealPath(), [
+                'folder' => 'servitecnet/models3d',
+                'resource_type' => 'auto'
+            ])->getSecurePath();
+        }
             $es_destacado = $request->has('es_destacado') ? 1 : 0;
         // 3. Guardar todo en la base de datos
         Project::create([
@@ -91,23 +95,19 @@ class ProjectController extends Controller
             'modelo_3d' => 'nullable|file'
             
             ]);
+        // 1. Subir nueva imagen a Cloudinary si existe
         if ($request->hasFile('image')) {
-            // Borra la imagen antigua del storage
-            if ($project->image_path) {
-                Storage::disk('public')->delete($project->image_path);
-            }
-            // Guarda la nueva
-            $project->image_path = $request->file('image')->store('projects/images', 'public');
+            $project->image_path = cloudinary()->upload($request->file('image')->getRealPath(), [
+                'folder' => 'servitecnet/images'
+            ])->getSecurePath();
         }
 
-        // 2. Procesar el nuevo modelo 3D si se subió uno
+        // 2. Subir nuevo modelo 3D a Cloudinary si existe
         if ($request->hasFile('modelo_3d')) {
-            // Borra el modelo 3D antiguo del storage
-            if ($project->modelo_3d_ruta) {
-                Storage::disk('public')->delete($project->modelo_3d_ruta);
-            }
-            // Guarda el nuevo
-            $project->modelo_3d_ruta = $request->file('modelo_3d')->store('projects/models3d', 'public');
+            $project->modelo_3d_ruta = cloudinary()->upload($request->file('modelo_3d')->getRealPath(), [
+                'folder' => 'servitecnet/models3d',
+                'resource_type' => 'auto'
+            ])->getSecurePath();
         }
         //Actualizamos los textos
         $project->title = $request->title;
@@ -125,18 +125,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        // 1. Eliminar archivos físicos asociados usando Storage
-        if ($project->image_path) {
-            Storage::disk('public')->delete($project->image_path);
-        }
-        if ($project->modelo_3d_ruta) {
-            Storage::disk('public')->delete($project->modelo_3d_ruta);
-        }
-
-        // 2. Borrar el registro de la base de datos
         $project->delete();
 
         // 3. Recargar la página con mensaje de éxito
-        return redirect()->route('projects.index')->with('success', 'El proyecto y archivos  fueron eliminados exitosamente.');
+        return redirect()->route('projects.index')->with('success', 'El proyecto fue eliminado exitosamente.');
     }
 }
