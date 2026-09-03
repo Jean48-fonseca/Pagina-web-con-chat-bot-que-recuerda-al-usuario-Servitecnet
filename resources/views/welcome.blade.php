@@ -113,32 +113,50 @@
         }
         /* --- RESPONSIVIDAD (CELULARES Y TABLETS) --- */
         @media (max-width: 768px) {
-         /* --- CÓDIGO NUEVO DEL MENÚ AQUÍ --- */
+        /* --- 1. ARREGLO DE LOS TEXTOS GIGANTES --- */
+    h1, .hero h1, .seccion-inicio h1 {
+        font-size: 1.8rem !important; /* Reduce drásticamente el tamaño del título */
+        line-height: 1.2 !important;
+        padding: 0 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    p, .hero p, .seccion-inicio p {
+        font-size: 0.9rem !important; /* Reduce el subtítulo */
+        line-height: 1.4 !important;
+        padding: 0 15px !important;
+    }
+
+    /* --- 2. ARREGLO DE LA BARRA DE NAVEGACIÓN (NAVBAR) --- */
     header, nav, .navbar { 
-        display: flex;
-        flex-direction: column !important;
-        align-items: center;
-        padding: 15px 5px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Pone el logo arriba del menú */
+        align-items: center !important;
+        padding: 15px 0 !important;
         height: auto !important;
+        background-color: rgba(0, 0, 0, 0.9) !important; /* Fondo más oscuro para que se lea */
     }
     
     header ul, nav ul, .nav-links {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px 15px;
-        width: 100%;
-        margin-top: 15px;
-        padding: 0;
+        display: flex !important;
+        flex-direction: column !important; /* Apila los enlaces uno debajo del otro */
+        width: 100% !important;
+        gap: 12px !important;
+        margin-top: 15px !important;
+        padding: 0 !important;
     }
     
-    header ul li a, nav ul li a, .nav-links a {
-        font-size: 0.8rem !important; 
-        text-align: center;
-        padding: 5px;
+    header ul li, nav ul li {
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
     }
-    /* --------------------------------- */
 
+    header ul li a, nav ul li a, .nav-links a {
+        display: block !important;
+        font-size: 1rem !important; /* Tamaño de letra legible para dedos */
+        padding: 8px !important;
+    }
     
     .chat-btn, .btn-whatsapp-flotante {
         width: 55px;

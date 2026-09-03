@@ -55,46 +55,82 @@
         .error-msg { color: #ff5252; margin-bottom: 15px; font-size: 14px; }
     /* --- RESPONSIVIDAD (CELULARES Y TABLETS) --- */
         @media (max-width: 768px) {
-            /* 1. El título y el logo se apilan si no caben */
-            .header-left {
+            /* --- 1. ARREGLO DE LOS TEXTOS GIGANTES --- */
+    h1, .hero h1, .seccion-inicio h1 {
+        font-size: 1.8rem !important; /* Reduce drásticamente el tamaño del título */
+        line-height: 1.2 !important;
+        padding: 0 10px !important;
+        margin-bottom: 10px !important;
+    }
+
+    p, .hero p, .seccion-inicio p {
+        font-size: 0.9rem !important; /* Reduce el subtítulo */
+        line-height: 1.4 !important;
+        padding: 0 15px !important;
+    }
+
+    /* --- 2. ARREGLO DE LA BARRA DE NAVEGACIÓN (NAVBAR) --- */
+    header, nav, .navbar { 
+        display: flex !important;
+        flex-direction: column !important; /* Pone el logo arriba del menú */
+        align-items: center !important;
+        padding: 15px 0 !important;
+        height: auto !important;
+        background-color: rgba(0, 0, 0, 0.9) !important; /* Fondo más oscuro para que se lea */
+    }
+    
+    header ul, nav ul, .nav-links {
+        display: flex !important;
+        flex-direction: column !important; /* Apila los enlaces uno debajo del otro */
+        width: 100% !important;
+        gap: 12px !important;
+        margin-top: 15px !important;
+        padding: 0 !important;
+    }
+    
+    header ul li, nav ul li {
+        width: 100% !important;
+        text-align: center !important;
+        display: block !important;
+    }
+
+    header ul li a, nav ul li a, .nav-links a {
+        display: block !important;
+        font-size: 1rem !important; /* Tamaño de letra legible para dedos */
+        padding: 8px !important;
+    }
+    
+    .chat-btn, .btn-whatsapp-flotante {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+    }
+            /* Reduce los márgenes excesivos en pantallas pequeñas */
+            .form-card {
+                padding: 25px 20px;
+                border-radius: 12px;
+            }
+
+            .form-header h2 {
+                font-size: 1.6rem;
+            }
+
+            /* Apila los botones de forma vertical para facilitar el toque (Touch UX) */
+            .form-actions {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .btn-cancel, 
+            .btn-submit {
+                width: 100%;
+                padding: 14px;
             }
             
-            /* 2. Los botones de arriba y el buscador ocupan todo el ancho */
-            .admin-actions {
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-box input {
-                width: 100%;
-            }
-
-            /* 3. Las tarjetas pasan a ser de 1 sola columna adaptada al celular */
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* 4. Dentro de la tarjeta: La foto pasa ARRIBA y el texto ABAJO */
-            .card-content {
-                flex-direction: column;
-            }
-
-            .card-img-container {
-                width: 100%;
-                height: 180px; /* Altura ideal para la foto en celular */
-            }
-
-            .card-info {
-                width: 100%;
-            }
-
-            /* 5. Los botones de Editar y Eliminar se acomodan mejor */
-            .card-buttons {
-                flex-wrap: wrap;
+            /* Sube el botón principal de 'Guardar' por encima del de 'Cancelar' */
+            .btn-submit {
+                order: -1; 
             }
         }
     </style>
