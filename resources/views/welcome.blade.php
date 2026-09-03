@@ -113,71 +113,68 @@
         }
         /* --- RESPONSIVIDAD (CELULARES Y TABLETS) --- */
         @media (max-width: 768px) {
-            /* 1. El título y el logo se apilan si no caben */
-            .header-left {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            /* 2. Los botones de arriba y el buscador ocupan todo el ancho */
-            .admin-actions {
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-box input {
-                width: 100%;
-            }
+    /* Ajuste de Botones Flotantes para que no estorben */
+    .chat-btn, .btn-whatsapp-flotante {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        font-size: 24px;
+    }
+    .chat-btn { right: 15px; }
+    .btn-whatsapp-flotante { left: 15px; }
 
-            /* 3. Las tarjetas pasan a ser de 1 sola columna adaptada al celular */
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
+    /* Ajuste de la Ventana del Chatbot (Fluida) */
+    .chat-window {
+        width: calc(100% - 30px);
+        right: 15px;
+        bottom: 80px;
+        height: 420px;
+    }
 
-            /* 4. Dentro de la tarjeta: La foto pasa ARRIBA y el texto ABAJO */
-            .card-content {
-                flex-direction: column;
-            }
-
-            .card-img-container {
-                width: 100%;
-                height: 180px; /* Altura ideal para la foto en celular */
-            }
-
-            .card-info {
-                width: 100%;
-            }
-
-            /* 5. Los botones de Editar y Eliminar se acomodan mejor */
-            .card-buttons {
-                flex-wrap: wrap;
-            }
-            /* --- Ajustes específicos para la portada pública --- */
+    /* Título y Logo */
+    .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
     
-    /* Pasa el contenedor dividido a una sola columna vertical */
+    /* Botones de Administración */
+    .admin-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box input { width: 100%; }
+
+    /* Tarjetas de Administración */
+    .admin-grid { grid-template-columns: 1fr; }
+    .card-content { flex-direction: column; }
+    .card-img-container {
+        width: 100%;
+        height: 200px; 
+    }
+    .card-info { width: 100%; }
+    .card-buttons { flex-wrap: wrap; }
+    
+    /* Portada Pública y Textos */
     .hero, .seccion-inicio {
         display: flex;
         flex-direction: column;
         padding: 20px 15px;
-    }
-
-    /* Achica el texto gigante (Cambia 'h1' si usaste otra clase) */
-    h1 { 
-        font-size: 2.2rem !important;
         text-align: center;
+    }
+    h1 { 
+        font-size: 2rem !important;
         line-height: 1.2;
     }
-
-    /* Evita que los contenedores se desborden por los lados */
     .container, .seccion {
         width: 100% !important;
         max-width: 100%;
         padding: 0 15px;
         box-sizing: border-box;
+        overflow-x: hidden; /* Evita el scroll horizontal fantasma */
     }
-        }
+}
        
     .tarjeta-3d {
         position: relative;

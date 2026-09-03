@@ -140,7 +140,7 @@
             border-radius: 10px;
             font-weight: 800;
             color: #ffffff;
-            background-color: #eab474; /* Amarillo quemado para diferenciar del Crear */
+            background-color: #eab474; 
             font-size: 1rem;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -149,51 +149,39 @@
         .btn-submit:hover {
             background-color: #d99f5e;
         }
-        /* --- RESPONSIVIDAD (CELULARES Y TABLETS) --- */
+
+        /* --- RESPONSIVIDAD EXCLUSIVA PARA EL FORMULARIO DE EDICIÓN --- */
         @media (max-width: 768px) {
-            /* 1. El título y el logo se apilan si no caben */
-            .header-left {
+            
+            /* Reduce los márgenes excesivos en pantallas pequeñas */
+            .form-card {
+                padding: 25px 20px;
+                border-radius: 12px;
+            }
+
+            .form-header h2 {
+                font-size: 1.6rem;
+            }
+
+            /* Apila los botones de forma vertical para facilitar el toque (Touch UX) */
+            .form-actions {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+                gap: 12px;
+                margin-top: 20px;
+            }
+
+            .btn-cancel, 
+            .btn-submit {
+                width: 100%;
+                padding: 14px;
             }
             
-            /* 2. Los botones de arriba y el buscador ocupan todo el ancho */
-            .admin-actions {
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-box input {
-                width: 100%;
-            }
-
-            /* 3. Las tarjetas pasan a ser de 1 sola columna adaptada al celular */
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* 4. Dentro de la tarjeta: La foto pasa ARRIBA y el texto ABAJO */
-            .card-content {
-                flex-direction: column;
-            }
-
-            .card-img-container {
-                width: 100%;
-                height: 180px; /* Altura ideal para la foto en celular */
-            }
-
-            .card-info {
-                width: 100%;
-            }
-
-            /* 5. Los botones de Editar y Eliminar se acomodan mejor */
-            .card-buttons {
-                flex-wrap: wrap;
+            /* Sube el botón principal de 'Guardar' por encima del de 'Cancelar' */
+            .btn-submit {
+                order: -1; 
             }
         }
-    </style>
+</style>
 </head>
 <body>
 

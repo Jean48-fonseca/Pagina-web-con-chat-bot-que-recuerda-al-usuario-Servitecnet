@@ -20,6 +20,71 @@
 
         .badge-pendiente { background-color: #ab4631; color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
         .fecha { color: #888; font-size: 0.85rem; }
+     /* --- RESPONSIVIDAD (CELULARES Y TABLETS) --- */
+        @media (max-width: 768px) {
+    /* Ajuste de Botones Flotantes para que no estorben */
+    .chat-btn, .btn-whatsapp-flotante {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        font-size: 24px;
+    }
+    .chat-btn { right: 15px; }
+    .btn-whatsapp-flotante { left: 15px; }
+
+    /* Ajuste de la Ventana del Chatbot (Fluida) */
+    .chat-window {
+        width: calc(100% - 30px);
+        right: 15px;
+        bottom: 80px;
+        height: 420px;
+    }
+
+    /* Título y Logo */
+    .header-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    /* Botones de Administración */
+    .admin-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box input { width: 100%; }
+
+    /* Tarjetas de Administración */
+    .admin-grid { grid-template-columns: 1fr; }
+    .card-content { flex-direction: column; }
+    .card-img-container {
+        width: 100%;
+        height: 200px; 
+    }
+    .card-info { width: 100%; }
+    .card-buttons { flex-wrap: wrap; }
+    
+    /* Portada Pública y Textos */
+    .hero, .seccion-inicio {
+        display: flex;
+        flex-direction: column;
+        padding: 20px 15px;
+        text-align: center;
+    }
+    h1 { 
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+    .container, .seccion {
+        width: 100% !important;
+        max-width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        overflow-x: hidden; /* Evita el scroll horizontal fantasma */
+    }
+}
+    
     </style>
 </head>
 <body>

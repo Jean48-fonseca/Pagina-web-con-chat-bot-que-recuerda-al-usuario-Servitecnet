@@ -6,185 +6,143 @@
     <title>Añadir Nuevo Proyecto - ServiTecNet</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Montserrat', sans-serif;
+    }
 
-        body {
-            background-color: #f7f3e8; /* Mismo fondo crema del dashboard */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
+    body {
+        background-color: #f7f3e8; /* Mismo fondo crema del dashboard */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 40px 20px;
+    }
 
-        .form-card {
-            background-color: #ffffff;
-            width: 100%;
-            max-width: 650px;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-        }
+    .form-card {
+        background-color: #ffffff;
+        width: 100%;
+        max-width: 650px;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
 
-        .form-header {
-            margin-bottom: 30px;
-            text-align: center;
-        }
+    .form-header {
+        margin-bottom: 30px;
+        text-align: center;
+    }
 
-        .form-header h2 {
-            font-size: 2rem;
-            color: #4a2f1d;
-            font-weight: 800;
-            margin-bottom: 8px;
-        }
+    .form-header h2 {
+        font-size: 2rem;
+        color: #4a2f1d;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
 
-        .form-header p {
-            color: #666;
-            font-size: 0.95rem;
-        }
+    .form-header p {
+        color: #666;
+        font-size: 0.95rem;
+    }
 
-        /* --- Alertas de Error --- */
-        .alert-error {
-            background-color: #fce8e6;
-            color: #c95e46;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-            border-left: 5px solid #c95e46;
-        }
-        .alert-error ul {
-            margin-left: 20px;
-            margin-top: 5px;
-        }
+    /* --- Alertas de Error --- */
+    .alert-error {
+        background-color: #fce8e6;
+        color: #c95e46;
+        padding: 15px 20px;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        font-size: 0.9rem;
+        border-left: 5px solid #c95e46;
+    }
+    .alert-error ul {
+        margin-left: 20px;
+        margin-top: 5px;
+    }
 
-        /* --- Estilos de los Inputs --- */
-        .form-group {
-            margin-bottom: 22px;
-        }
+    /* --- Estilos de los Inputs --- */
+    .form-group {
+        margin-bottom: 22px;
+    }
 
-        .form-group label {
-            display: block;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #4a2f1d;
-            margin-bottom: 8px;
-        }
+    .form-group label {
+        display: block;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #4a2f1d;
+        margin-bottom: 8px;
+    }
 
-        .form-group input[type="text"],
-        .form-group textarea,
-        .form-group input[type="file"] {
-            width: 100%;
-            padding: 14px 15px;
-            border-radius: 10px;
-            border: 2px solid #f2ebe0;
-            background-color: #fcfbfa;
-            color: #333;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            outline: none;
-        }
+    .form-group input[type="text"],
+    .form-group textarea,
+    .form-group input[type="file"] {
+        width: 100%;
+        padding: 14px 15px;
+        border-radius: 10px;
+        border: 2px solid #f2ebe0;
+        background-color: #fcfbfa;
+        color: #333;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        outline: none;
+    }
 
-        .form-group input[type="text"]:focus,
-        .form-group textarea:focus {
-            border-color: #dfc8b4;
-            background-color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(223, 200, 180, 0.2);
-        }
+    .form-group input[type="text"]:focus,
+    .form-group textarea:focus {
+        border-color: #dfc8b4;
+        background-color: #ffffff;
+        box-shadow: 0 0 0 4px rgba(223, 200, 180, 0.2);
+    }
 
-        .form-group input[type="file"] {
-            padding: 10px;
-            background-color: #ffffff;
-        }
+    .form-group input[type="file"] {
+        padding: 10px;
+        background-color: #ffffff;
+    }
 
-        /* --- Botones --- */
-        .form-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 35px;
-        }
+    /* --- Botones --- */
+    .form-actions {
+        display: flex;
+        gap: 15px;
+        margin-top: 35px;
+    }
 
-        .btn-cancel {
-            flex: 1;
-            text-align: center;
-            padding: 15px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: 800;
-            color: #4a2f1d;
-            background-color: #f2ebe0;
-            transition: background-color 0.3s;
-        }
+    .btn-cancel {
+        flex: 1;
+        text-align: center;
+        padding: 15px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 800;
+        color: #4a2f1d;
+        background-color: #f2ebe0;
+        transition: background-color 0.3s;
+    }
 
-        .btn-cancel:hover {
-            background-color: #dfc8b4;
-        }
+    .btn-cancel:hover {
+        background-color: #dfc8b4;
+    }
 
-        .btn-submit {
-            flex: 2;
-            padding: 15px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 800;
-            color: #ffffff;
-            background-color: #a45a30;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .btn-submit {
+        flex: 2;
+        padding: 15px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 800;
+        color: #ffffff;
+        background-color: #a45a30;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
 
-        .btn-submit:hover {
-            background-color: #8c4b27;
-        }
-        /* --- RESPONSIVIDAD (CELULARES Y TABLETS) --- */
-        @media (max-width: 768px) {
-            /* 1. El título y el logo se apilan si no caben */
-            .header-left {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            /* 2. Los botones de arriba y el buscador ocupan todo el ancho */
-            .admin-actions {
-                width: 100%;
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .search-box input {
-                width: 100%;
-            }
+    .btn-submit:hover {
+        background-color: #8c4b27;
+    }
 
-            /* 3. Las tarjetas pasan a ser de 1 sola columna adaptada al celular */
-            .admin-grid {
-                grid-template-columns: 1fr;
-            }
-
-            /* 4. Dentro de la tarjeta: La foto pasa ARRIBA y el texto ABAJO */
-            .card-content {
-                flex-direction: column;
-            }
-
-            .card-img-container {
-                width: 100%;
-                height: 180px; /* Altura ideal para la foto en celular */
-            }
-
-            .card-info {
-                width: 100%;
-            }
-
-            /* 5. Los botones de Editar y Eliminar se acomodan mejor */
-            .card-buttons {
-                flex-wrap: wrap;
-            }
-            <style>
+    /* --- TUS OTROS ESTILOS CONSERVADOS --- */
     .tarjeta-3d {
         position: relative;
         width: 100%;
@@ -201,8 +159,8 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        z-index: 2; /* Está por encima */
-        transition: opacity 0.5s ease; /* Efecto de desvanecimiento suave */
+        z-index: 2; 
+        transition: opacity 0.5s ease; 
     }
 
     .modelo-fondo {
@@ -211,14 +169,14 @@
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: 1; /* Está por debajo esperando */
+        z-index: 1; 
     }
 
-    /* La magia: Cuando el mouse pasa por encima de la tarjeta... */
     .tarjeta-3d:hover .img-frontal {
-        opacity: 0; /* La imagen se vuelve invisible */
-        pointer-events: none; /* Permite que tus clics traspasen hacia el 3D */
+        opacity: 0; 
+        pointer-events: none; 
     }
+
     .admin-panel {
         background-color: #1a1a1a;
         padding: 40px;
@@ -229,21 +187,14 @@
         font-family: Arial, sans-serif;
         box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
+
     .admin-panel h2 {
         color: #fbc02d;
         text-align: center;
         text-transform: uppercase;
         margin-bottom: 20px;
     }
-    .form-group {
-        margin-bottom: 20px;
-    }
-    .form-group label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 8px;
-        color: #ccc;
-    }
+
     .form-control {
         width: 100%;
         padding: 10px;
@@ -253,20 +204,7 @@
         border-radius: 4px;
         box-sizing: border-box;
     }
-    .btn-submit {
-        background-color: #fbc02d;
-        color: #000;
-        font-weight: bold;
-        padding: 12px;
-        width: 100%;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        text-transform: uppercase;
-    }
-    .btn-submit:hover {
-        background-color: #fff;
-    }
+
     .error-box {
         background-color: #ff4c4c;
         color: #fff;
@@ -274,9 +212,75 @@
         border-radius: 4px;
         margin-bottom: 20px;
     }
-</style>
+
+    /* --- RESPONSIVIDAD UNIFICADA (CELULARES Y TABLETS) --- */
+    @media (max-width: 768px) {
+        
+        /* Ajustes para tu Formulario de Creación */
+        .form-card {
+            padding: 25px 20px;
+            border-radius: 12px;
         }
-    </style>
+
+        .form-header h2 {
+            font-size: 1.6rem;
+        }
+
+        .form-actions {
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-cancel, 
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+        }
+        
+        .btn-submit {
+            order: -1; /* Pone el botón de guardar primero en celulares */
+        }
+
+        /* Ajustes para tu Panel y Tarjetas */
+        .header-left {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .admin-actions {
+            width: 100%;
+            flex-direction: column;
+            align-items: stretch;
+        }
+        
+        .search-box input {
+            width: 100%;
+        }
+
+        .admin-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .card-content {
+            flex-direction: column;
+        }
+
+        .card-img-container {
+            width: 100%;
+            height: 180px; 
+        }
+
+        .card-info {
+            width: 100%;
+        }
+
+        .card-buttons {
+            flex-wrap: wrap;
+        }
+    }
+</style>
     
 </head>
 <body>
