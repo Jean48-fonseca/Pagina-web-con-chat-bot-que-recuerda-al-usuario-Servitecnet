@@ -113,6 +113,39 @@
         }
         /* --- RESPONSIVIDAD (CELULARES Y TABLETS) --- */
         @media (max-width: 768px) {
+         /* --- CÓDIGO NUEVO DEL MENÚ AQUÍ --- */
+    header, nav, .navbar { 
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+        padding: 15px 5px !important;
+        height: auto !important;
+    }
+    
+    header ul, nav ul, .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px;
+        width: 100%;
+        margin-top: 15px;
+        padding: 0;
+    }
+    
+    header ul li a, nav ul li a, .nav-links a {
+        font-size: 0.8rem !important; 
+        text-align: center;
+        padding: 5px;
+    }
+    /* --------------------------------- */
+
+    
+    .chat-btn, .btn-whatsapp-flotante {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+    }
+
     /* Ajuste de Botones Flotantes para que no estorben */
     .chat-btn, .btn-whatsapp-flotante {
         width: 55px;
@@ -274,7 +307,6 @@ model-viewer::part(default-progress-bar) {
         <ul class="nav-menu">
             <li><a href="/">INICIO</a></li>
           <!--Estos usan el ID para bajar automaticamente a la sección -->
-            <li><a href="#construccion">CONSTRUCCIÓN</a></li>
             <li><a href="#proyectos">PROYECTOS</a></li>
             <li><a href="#servicios">SERVICIOS</a></li>
             <li><a href="https://wa.me/51922657185" target="_blank">CONTACTO</a></li>

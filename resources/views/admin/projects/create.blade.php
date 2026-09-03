@@ -215,7 +215,38 @@
 
     /* --- RESPONSIVIDAD UNIFICADA (CELULARES Y TABLETS) --- */
     @media (max-width: 768px) {
-        
+        /* --- CÓDIGO NUEVO DEL MENÚ AQUÍ --- */
+    header, nav, .navbar { 
+        display: flex;
+        flex-direction: column !important;
+        align-items: center;
+        padding: 15px 5px !important;
+        height: auto !important;
+    }
+    
+    header ul, nav ul, .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px 15px;
+        width: 100%;
+        margin-top: 15px;
+        padding: 0;
+    }
+    
+    header ul li a, nav ul li a, .nav-links a {
+        font-size: 0.8rem !important; 
+        text-align: center;
+        padding: 5px;
+    }
+    /* --------------------------------- */
+
+    
+    .chat-btn, .btn-whatsapp-flotante {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+    }
         /* Ajustes para tu Formulario de Creación */
         .form-card {
             padding: 25px 20px;
